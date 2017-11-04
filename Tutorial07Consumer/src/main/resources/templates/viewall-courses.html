@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"></link>
+<script src="//code.jquery.com/jquery-2.2.3.js" type="text/javascript"></script>
+<script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js" type="text/javascript"></script> 
+    <head>
+        <title>View All Courses</title>
+    </head>
+    <script>
+	    $(document).ready( function () {
+	        $('#example').DataTable();
+	    } );
+    </script>
+    <body>
+        <h1>All Courses</h1>
+	       	<table id="example" class="display" cellspacing="0" width="100%">
+		        <thead>
+		            <tr>
+		                <th>No</th>
+		                <th>Id</th>
+		                <th>Name</th>
+		                <th>Credits</th>
+		            </tr>
+		        </thead>
+		        <tfoot>
+		            <tr th:each="course,iterationStatus: ${courses}"  th:class="${iterationStatus.odd}?'odd'">
+		                <th th:text="${iterationStatus.count}">No. 1</th>
+		                <th th:text="${course.id_course}">Course Id</th>
+		                <th th:text="${course.name}">Course Name</th>
+		                <th th:text="${course.credits}">Course Credits</th>
+		            </tr>
+		        </tfoot>
+		    </table>
+    </body>
+</html>
